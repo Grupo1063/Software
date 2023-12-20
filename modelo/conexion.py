@@ -18,16 +18,16 @@ def __conec():
   )
   return conn
 
-# def buscar_log(user, passw):
-#   conn = conec()
-#   cursor = conn.cursor()
-#   consulta = "SELECT * FROM usuarios WHERE {} = %s AND {} = %s".format("nombre", "password")
-#   valores = (user, passw)
-#   cursor.execute(consulta, valores)
-#   rows = cursor.fetchall()
-#   cursor.close()
-#   conn.close()
-#   return bool(rows)
+def buscar_log(email, passw):
+  conn = __conec()
+  cursor = conn.cursor()
+  consulta = "SELECT * FROM usuarios WHERE {} = %s AND {} = %s".format("email", "password")
+  valores = (email, passw)
+  cursor.execute(consulta, valores)
+  rows = cursor.fetchall()
+  cursor.close()
+  conn.close()
+  return bool(rows), rows
 
 def insertar(id, nombres, fecha, rol, email, pass_1):
   conn = __conec()

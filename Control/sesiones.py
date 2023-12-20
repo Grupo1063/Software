@@ -17,3 +17,7 @@ def registro_u(id, nombres, fecha, email, pass_1, pass_2, rol=4):
     else:
         return False
 
+def user(email, pass_):
+    band, user = con.buscar_log(email, pass_)
+    return band, user
+        
