@@ -1,4 +1,6 @@
-import Control.registro as rg
+import sys
+sys.path.append("C:/Users/PC/Documents/GitHub/Software/")
+from control import sesiones as rg
 
 def menu():
     print("\n\t\tMenu")
@@ -8,15 +10,18 @@ def menu():
 
 def reg():
     print("Registro")
-    nombre = input("Ingrese su Nombre")
-    apellido = input("Ingrese su Apellido")
-    fecha = input("Ingrese su fecha de nacimiento")
-    email = input("Ingrese su Correo Electronico")
-    pass_1 = input("Ingrese su Contrasena ")
-    pass_2 = input("Confirmar Contrasena")
-    if (pass_1 == pass_2):
-        nombre_c = nombre + apellido
-        rg.registro(nombre_c, fecha, 1, email, pass_1 )
+    id_ = input("Ingrese su Cedula:\n>")
+    nombre = input("Ingrese su Nombre:\n>")
+    apellido = input("Ingrese su Apellido:\n>")
+    nombre_c = nombre + " " + apellido
+    fecha = input("Ingrese su fecha de nacimiento (dd/mm/yyyy):\n>")
+    email = input("Ingrese su Correo Electronico:\n>")
+    pass_1 = input("Ingrese su Contrasena:\n>")
+    pass_2 = input("Confirmar Contrasena:\n>")
+    if (rg.registro_u(id_, nombre_c, fecha, email, pass_1 ,pass_2)):
+        print("\n\n\n\n************ Registro exitoso ************")
+    else:
+        print("\n\n\n\n************ Los datos ingresados son incorectos ************")
         
     
 def inicio():
