@@ -8,7 +8,7 @@ def f_fecha(fecha_entrada):
     fecha_salida = fecha_objeto.strftime("%Y-%m-%d")
     return fecha_salida
 
-def registro_u(id, nombres, fecha, email, pass_1, pass_2, rol=4):
+def registro_u(id, nombres, fecha, email, pass_1, pass_2, rol=3):
     if(pass_1 == pass_2 and len(id)==10):
         fecha = f_fecha(fecha)
         # print(f"\n\nDatos Ingresados\n\n{id}, \n{nombres}, \n{fecha}, \n{rol}, \n{email}, \n{pass_1} ")

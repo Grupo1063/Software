@@ -1,12 +1,29 @@
 import sys
 sys.path.append("C:/Users/PC/Documents/GitHub/Software/")
 from control import sesiones as rg
+from control import acciones as mv
 
-def menu():
-    print("\n\t\tMenu")
-    print("1) Reguistrar")
-    print("2) Iniciar Sesion")
-    print("3) Salir")
+def menu(op):
+    match op:
+        case 1:
+            print("\n\t\tMenu")
+            print("1) Reguistrar")
+            print("2) Iniciar Sesion")
+            print("3) Salir")
+        case 2:
+            print("\n\n************ Proximamente menu Administrador ************") 
+        case 3:
+            print("\n\t\tMenu de Empleado\n")
+            print("1) Transferencias")
+            print("2) Depositos")
+            print("3) Retiros")
+            print("4) Salir")
+        case 4:
+            print("\n\t\tMenu de Clientes\n")
+            print("1) Transferencias")
+            print("2) Saldo de Cuanta")
+            print("3) Salir")
+    
 
 def reg():
     print("Registro")
@@ -22,7 +39,45 @@ def reg():
         print("\n\n\n\n************ Registro exitoso ************")
     else:
         print("\n\n\n\n************ Los datos ingresados son incorectos ************")
-        
+
+def S_Admin():
+    print("\n\n************ Proximamente Administrador ************") 
+    
+def S_Empleado(user):
+    c=0
+    while (c!=1):
+        menu(3)
+        op = int(input("Ingrese una opcion \n>"))
+        match op:
+            case 1:
+                print("\n************ Transferencias ************")
+                mv.trans_2(user)
+            case 2:
+                print("\n************ Depositos ************")
+                mv.deposito(user)
+            case 3:
+                print("\n************ Retiros ************")
+                mv.retiro(user)
+            case 4:
+                print("\n\n************ Cerrando Sesion ************")
+                c=1
+    
+def S_Cliente(user):
+    c=0
+    while (c!=1):
+        menu(4)
+        op = int(input("Ingrese una opcion \n>"))
+        match op:
+            case 1:
+                print("\n************ Transferencias ************")
+                mv.trans(user)
+            case 2:
+                print("\n************ Saldo ************")
+                mv.saldos(user)
+            case 3:
+                print(f"\n\n************ Cerrando Sesion de {user[0][2]} ************")
+                c=1
+
 def sesion():
     print("Inicia Sesión")
     email = input("Ingrese su Correo Electronico:\n>")
@@ -31,23 +86,24 @@ def sesion():
         band, user = rg.user(email, pass_)
         if(band):
             print("\n\n\n\n************ Sesion Exitosa ************")
-            rol = user[0][3]
+            rol = int(user[0][4])
             match rol:
-                case 1:
-                    print("\n\n************ Proximamente Administrador ************")              
+                case 1: 
+                    S_Admin(user)            
                 case 2:
-                    print("\n\n************ Proximamente Gerente ************")
+                    S_Empleado(user)
                 case 3:
-                    print("\n\n************ Proximamente Empleado ************")
-                case 4:
-                    print("\n\n************ Proximamente Cliente ************")
+                    S_Cliente(user)
+                                
+                        
+                
         else:
             print("\n\n\n\n************ Las credenciales ingresadas son incorectos ************")
     
 def inicio():
     i=0
     while (i!=1):
-        menu()
+        menu(1)
         op = int(input("Ingrese una opcion \n>"))
         match op:
             case 1:
