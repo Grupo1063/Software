@@ -93,7 +93,3 @@ def movimientos(codigo, cuenta_origen, cuenta_destino, accion, monto):
         conn.close()
 
     return mensaje
-
-# movimientos(6, 4, 1, 'RETIRO', 100.0)
-# movimientos(2, 4, 0, 'DEPOSITO', 100.0)
-# movimientos(6, 4, 1, 'TRANSFERENCIA', 100.0)
